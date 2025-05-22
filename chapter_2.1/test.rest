@@ -1,0 +1,19 @@
+### TEST GET / WEBSITE
+GET http://localhost:8000
+
+### TEST GET /dashboard WEBSITE
+GET http://localhost:8000/dashboard
+
+### DATA Endpoint
+GET http://localhost:8000/api/data
+
+### DELETE Endpoint for adding to data
+POST http://localhost:8000/api/data
+Content-Type: application/json
+
+{
+    "name":"elisia"
+}
+
+### DELETE Endpoint
+DELETE http://localhost:8000/api/endpoint

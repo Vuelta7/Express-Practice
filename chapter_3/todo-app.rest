@@ -1,0 +1,20 @@
+### GET /
+GET http://localhost:8000
+
+### REGISTER user to the /auth/register
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username": "matiko",
+    "password": "123"
+}
+
+### LOGIN user to the /auth/login
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "username": "matiko",
+    "password": "123"
+}
