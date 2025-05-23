@@ -40,11 +40,24 @@ router.post("/login", (req, res) => {
     const getUser = db.prepare("SELECT * FROM users WHERE username = ?");
     const user = getUser.get(username);
 
+    // user not found
     if (!user) {
       return res.status(404).send({ message: "user not found" });
     }
 
+    // password not match
     const passwordIsValid = bcrypt.compareSync(password, user.password);
+    if (!passwordIsValid) {
+      return res.status(401).send({ message: "Invalid Password" });
+    }
+
+    console.log(user);
+
+    const token = jwt.sign({ id: user }, process.env.JWT_SECRET, {
+      expiresIn: "24h",
+    });
+
+    res.json({ token });
   } catch (err) {
     console.log(err.message);
     res.sendStatus(503);

@@ -6,7 +6,7 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "matiko",
+    "username": "gehlee",
     "password": "123"
 }
 
@@ -15,6 +15,6 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "username": "matiko",
+    "username": "gehlee",
     "password": "123"
 }

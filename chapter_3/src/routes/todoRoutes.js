@@ -3,7 +3,11 @@ import db from "../db.js";
 
 const router = express.Router();
 
-router.get("/", () => {});
+router.get("/", () => {
+  const getTodos = db.prepare("SELECT * FROM todos WHERE user_id = ?");
+  const todos = getTodos.all(req.userID);
+  res.json(todos);
+});
 
 router.post("/", () => {});
 
