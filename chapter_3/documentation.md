@@ -39,7 +39,16 @@ project/
 get the content in public folder here, create the files and copy and paste it
 <br><a href="https://github.com/Vuelta7/Express-Practice/tree/main/chapter_3/public">public fodler<a>
 
-## 3. Add a testing for .rest file
+## 3. .Env configuration
+
+inside the .env file
+
+```.env
+JWT_SECRET="your_jwt_secret_key"
+PORT="8000"
+```
+
+## 4. Add a testing for .rest file
 
 ```
 ### GET /
@@ -64,7 +73,7 @@ Content-Type: application/json
 }
 ```
 
-## 4. Configuring the Server.js
+## 5. Configuring the Server.js
 
 ```js
 // Modern way of importing in nodejs
@@ -229,15 +238,19 @@ export default router;
 ## 7. configure the authMiddleware
 
 ```js
+// import the jwt
 import jwt from "jsonwebtoken";
 
+// middleware to check if there a token
 function authMiddleware(req, res, next) {
   const token = req.headers["authorization"];
 
+  // if theres no token
   if (!token) {
     return res.status(401).json({ message: "No token provided" });
   }
 
+  // if it has token
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: "Invalid token" });
@@ -248,23 +261,28 @@ function authMiddleware(req, res, next) {
   });
 }
 
+// export the middleware
 export default authMiddleware;
 ```
 
 ## 8. configure the todo routes
 
 ```js
+// import the following
 import express from "express";
 import db from "../db.js";
 
+// initialize the database
 const router = express.Router();
 
+// create an endpoint for the for the /todos
 router.get("/", (req, res) => {
   const getTodos = db.prepare("SELECT * FROM todos WHERE user_id = ?");
   const todos = getTodos.all(req.userId);
   res.json(todos);
 });
 
+// create an post for inserting new todos
 router.post("/", (req, res) => {
   const { task } = req.body;
   const insertTodo = db.prepare(
@@ -275,6 +293,7 @@ router.post("/", (req, res) => {
   res.json({ id: result.lastInsertRowid, task, completed: 0 });
 });
 
+// updating endpoint for the completed parameter
 router.put("/:id", (req, res) => {
   const { completed } = req.body;
   const { id } = req.params;
@@ -286,6 +305,7 @@ router.put("/:id", (req, res) => {
   res.json({ message: " Todo completed" });
 });
 
+// delete the whole todo
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
   const userId = req.userId;
@@ -297,6 +317,7 @@ router.delete("/:id", (req, res) => {
   res.send({ message: "Todo deleted" });
 });
 
+// export the todo router
 export default router;
 ```
 
