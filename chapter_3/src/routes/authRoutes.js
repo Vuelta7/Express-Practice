@@ -9,13 +9,14 @@ router.post("/register", (req, res) => {
   const { username, password } = req.body;
 
   const hashPassword = bcrypt.hashSync(password, 8);
+
   try {
     const insertUser = db.prepare(
       `INSERT INTO users (username, password) VALUES (?, ?)`
     );
     const result = insertUser.run(username, hashPassword);
 
-    const defaultTodo = `Hello`;
+    const defaultTodo = `Hello :) Add your first todo!`;
     const insertTodo = db.prepare(
       `INSERT INTO todos (user_id, task) VALUES (?, ?)`
     );
@@ -42,7 +43,7 @@ router.post("/login", (req, res) => {
 
     // user not found
     if (!user) {
-      return res.status(404).send({ message: "user not found" });
+      return res.status(404).send({ message: "User not found" });
     }
 
     // password not match

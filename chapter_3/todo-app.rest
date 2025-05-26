@@ -6,8 +6,8 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "gehlee",
-    "password": "123"
+    "username": "gehlee@gmail.com",
+    "password": "12345678"
 }
 
 ### LOGIN user to the /auth/login
@@ -15,6 +15,32 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "username": "gehlee",
-    "password": "123"
+   "username": "gehlee@gmail.com",
+    "password": "12345678"
 }
+
+### fetch todos GET /TODOS (protected)
+GET http://localhost:8000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ4MjU5NjkwLCJleHAiOjE3NDgzNDYwOTB9.HTNAhT5CCi0fdhc4bhk2kWGrQ2gumfmrJPEh-g-KKD0
+
+### add todos POST /TODOS (protected)
+POST http://localhost:8000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ4MjU5NjkwLCJleHAiOjE3NDgzNDYwOTB9.HTNAhT5CCi0fdhc4bhk2kWGrQ2gumfmrJPEh-g-KKD0
+Content-Type: application/json
+
+{
+    "task": "fk u"
+}
+
+### update todos PUT /TODO (protected) 
+PUT http://localhost:8000/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ4MjU5NjkwLCJleHAiOjE3NDgzNDYwOTB9.HTNAhT5CCi0fdhc4bhk2kWGrQ2gumfmrJPEh-g-KKD0
+Content-Type: application/json
+
+{
+    "completed": 1
+}
+
+### update todos PUT /TODO (protected) 
+DELETE http://localhost:8000/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ4MjU5NjkwLCJleHAiOjE3NDgzNDYwOTB9.HTNAhT5CCi0fdhc4bhk2kWGrQ2gumfmrJPEh-g-KKD0
