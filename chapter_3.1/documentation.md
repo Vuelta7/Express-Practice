@@ -15,6 +15,12 @@ inside the package.json file, add this in scripts
 "dev": "node --watch --env-file=.env --experimental-strip-types --experimental-sqlite ./src/server.js",
 ```
 
+and, change the type to module
+
+```json
+"type": "module",
+```
+
 then, create a folder and file structure
 
 ```plaintext
@@ -71,6 +77,30 @@ Content-Type: application/json
    "username": "gehlee@gmail.com",
     "password": "12345678"
 }
+
+### fetch todos GET /TODOS (protected)
+GET http://localhost:8000/todos
+Authorization: <token>
+
+### add todos POST /TODOS (protected)
+POST http://localhost:8000/todos
+Authorization: <token>
+
+{
+    "task": "task one ehey"
+}
+
+### update todos PUT /TODO (protected)
+PUT http://localhost:8000/todos/2
+Authorization: <token>
+
+{
+    "completed": 1
+}
+
+### update todos PUT /TODO (protected)
+DELETE http://localhost:8000/todos/2
+Authorization: <token>
 ```
 
 ## 5. Configuring the Server.js
@@ -302,7 +332,7 @@ router.put("/:id", (req, res) => {
   const updatedTodo = db.prepare("UPDATE todos SET completed = ? WHERE id = ?");
   updatedTodo.run(completed, id);
 
-  res.json({ message: " Todo completed" });
+  res.json({ message: "Todo completed" });
 });
 
 // delete the whole todo

@@ -1,5 +1,5 @@
 import { DatabaseSync } from "node:sqlite";
-const db = new DatabaseSync(":memory");
+const db = new DatabaseSync(":memory:");
 
 db.exec(`
     CREATE TABLE users (

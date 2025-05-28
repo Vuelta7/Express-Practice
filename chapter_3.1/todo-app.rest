@@ -19,4 +19,28 @@ Content-Type: application/json
     "password": "12345678"
 }
 
-TODO: COMPLETE THE TESTING AND DEBUGGING
+### fetch todos GET /TODOS (protected)
+GET http://localhost:8000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ4NDEwOTEyLCJleHAiOjE3NDg0OTczMTJ9.Pz_JQMel0Uore3dzEnWZTHoZVRUCfPULv19VhjmcZMM
+
+### add todos POST /TODOS (protected)
+POST http://localhost:8000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ4NDEwOTEyLCJleHAiOjE3NDg0OTczMTJ9.Pz_JQMel0Uore3dzEnWZTHoZVRUCfPULv19VhjmcZMM
+Content-Type: application/json
+
+{
+    "task": "fk u"
+}
+
+### update todos PUT /TODO (protected) 
+PUT http://localhost:8000/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ4NDEwOTEyLCJleHAiOjE3NDg0OTczMTJ9.Pz_JQMel0Uore3dzEnWZTHoZVRUCfPULv19VhjmcZMM
+Content-Type: application/json
+
+{
+    "completed": 1
+}
+
+### update todos PUT /TODO (protected) 
+DELETE http://localhost:8000/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ4NDEwOTEyLCJleHAiOjE3NDg0OTczMTJ9.Pz_JQMel0Uore3dzEnWZTHoZVRUCfPULv19VhjmcZMM
