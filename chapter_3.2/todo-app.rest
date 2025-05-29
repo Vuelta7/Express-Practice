@@ -1,0 +1,41 @@
+### GET /
+GET http://localhost:8000
+
+### REGISTER user to the /auth/register
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username": "gehlee@gmail.con",
+    "password": "12345678"
+}
+
+### LOGIN user to the /auth/login
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "username": "gehlee@gmail.com",
+    "password": "12345678"
+}
+
+### fetch todos GET /TODOS (protected)
+GET http://localhost:8000/todos
+Authorization: <token>
+
+{
+    "task": "task one ehey"
+}
+
+### update todos PUT /TODO (protected)
+PUT http://localhost:8000/todos/2
+Authorization: <token>
+
+{
+    "completed": 1
+}
+
+### update todos PUT /TODO (protected)
+DELETE http://localhost:8000/todos/2
+Authorization: <token>
+
