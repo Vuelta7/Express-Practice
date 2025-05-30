@@ -85,6 +85,7 @@ Authorization: <token>
 ### add todos POST /TODOS (protected)
 POST http://localhost:8000/todos
 Authorization: <token>
+Content-Type: application/json
 
 {
     "task": "task one ehey"
@@ -93,6 +94,7 @@ Authorization: <token>
 ### update todos PUT /TODO (protected)
 PUT http://localhost:8000/todos/2
 Authorization: <token>
+Content-Type: application/json
 
 {
     "completed": 1
