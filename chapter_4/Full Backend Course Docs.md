@@ -350,6 +350,18 @@ rm -rf .prisma
 npm install
 ```
 
+To start running the env.
+
+```bash
+docker compose up --build
+```
+
+To stop the running of the env.
+
+```bash
+docker compose down
+```
+
 ## 10.Access the App and do a Testing
 
 Open `http://localhost:5003` (or `localhost:3000` if changed) in your browser to see the frontend. You can register, log in, and manage your todo list from there.

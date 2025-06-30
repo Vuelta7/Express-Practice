@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     build: .
-    container_name: todo-app
+    container_name: app
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/todoapp
       - JWT_SECRET=your_jwt_secret_here
