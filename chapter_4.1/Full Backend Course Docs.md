@@ -124,9 +124,9 @@ model Todo {
 inside the prismaClient.js add a initialization
 
 ```js
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { PrismaClient } from "./generated/prisma/index.js";
 
+const prisma = new PrismaClient();
 export default prisma;
 ```
 
@@ -394,25 +394,6 @@ EXPOSE 5003
 CMD ["node", "./src/server.js"]
 ```
 
-```bash
-npx prisma format
-npx prisma generate
-docker compose build
-docker compose run app npx prisma migrate dev --name init
-docker compose up
-```
-
-```bash
-docker-compose down --volumes --remove-orphans
-docker image prune -a
-rm -rf node_modules
-rm -rf prisma/migrations
-rm -rf prisma/dev.db
-rm -rf node_modules/.prisma
-rm -rf .prisma
-npm install
-```
-
 To manually configure Prisma ORM
 
 ```bash
@@ -447,4 +428,25 @@ docker compose down
 
 ## 10.Access the App and do a Testing
 
-Open `http://localhost:5003` (or `localhost:3000` if changed) in your browser to see the frontend. You can register, log in, and manage your todo list from there.
+Open `http://localhost:5003` in your browser to see the frontend. You can register, log in, and manage your todo list from there.
+
+Incase of break out use this commands:
+
+```bash
+npx prisma format
+npx prisma generate
+docker compose build
+docker compose run app npx prisma migrate dev --name init
+docker compose up
+```
+
+```bash
+docker-compose down --volumes --remove-orphans
+docker image prune -a
+rm -rf node_modules
+rm -rf prisma/migrations
+rm -rf prisma/dev.db
+rm -rf node_modules/.prisma
+rm -rf .prisma
+npm install
+```
