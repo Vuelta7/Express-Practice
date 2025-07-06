@@ -121,6 +121,13 @@ model Todo {
 }
 ```
 
+after writing this config model, run these command to generate the model
+
+```bash
+npx prisma format
+npx prisma generate
+```
+
 inside the prismaClient.js add a initialization
 
 ```js
@@ -297,6 +304,7 @@ router.put("/:id", async (req, res) => {
   const { completed } = req.body;
   const { id } = req.params;
 
+  // the use of "!!" is to make sure it's boolean
   const updatedTodo = await prisma.todo.update({
     where: {
       id: parseInt(id),
